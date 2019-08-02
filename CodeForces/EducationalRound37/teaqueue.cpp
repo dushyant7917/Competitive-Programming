@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+typedef long long ll;
+typedef double dbl;
+#define fr(x,a,b) for(ll x=a;x<b;x++)
+#define rf(x,a,b) for(ll x=a;x>b;x--)
+#define pii pair<ll,ll>
+#define PB push_back
+#define MP make_pair
+#define mod 1000000007
+#define gmax LLONG_MAX
+#define gmin LLONG_MIN
+#define INF 2e9
+#define N 100001
+#define MAX(a,b,c) max(max(a,b),c)
+#define MIN(a,b,c) min(min(a,b),c)
+#define SZ(s) s.size()
+#define MS(x,v) memset(x,v,sizeof(x))
+
+int main(){
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+  ll t;
+  cin>>t;
+
+  ll n;
+  ll l,r,tm;
+  while(t--){
+    cin>>n;
+    queue<pii> q;
+    fr(i,0,n){
+      cin>>l>>r;
+      q.push(pii(l,r));
+    }
+
+    vector<ll> tq;
+    tm=1;
+    while(q.size()){
+      l=q.front().first;
+      r=q.front().second;
+      q.pop();
+
+      if(tm<=r){
+        while(tm<l) tm++;
+        tq.PB(tm);
+        tm++;
+      }
+      else tq.PB(0);
+    }
+
+    fr(i,0,SZ(tq)) cout<<tq[i]<<" ";
+    cout<<"\n";
+  }
+
+  return 0;
+}
